@@ -22,7 +22,9 @@ export const Option = (props: OptionProps) => {
 
 	const handleClick =
 		(clickedValue: OptionType['value']): MouseEventHandler<HTMLLIElement> =>
-		() => {
+		(e) => {
+			// что бы не срабатывал useOutsideClickClose у формы при выборе опции
+			e.stopPropagation();
 			onClick(clickedValue);
 		};
 
